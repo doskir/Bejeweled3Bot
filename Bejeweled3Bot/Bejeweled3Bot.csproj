@@ -65,7 +65,10 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GameWindow.cs" />
+    <Compile Include="Gem.cs" />
     <Compile Include="ImageProcessing.cs" />
+    <Compile Include="Move.cs" />
+    <Compile Include="PlayArea.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
