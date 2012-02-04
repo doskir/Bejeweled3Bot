@@ -10,10 +10,14 @@ namespace Bejeweled3Bot
 {
     class ImageProcessing
     {
-
-        public Image<Bgr,byte>[,] ExtractGemSlots(Image<Bgr,byte> screenshot)
+        /// <summary>
+        /// Extracts each gems rectangle in the image
+        /// </summary>
+        /// <param name="screenshot">An image of the current playing area (without windowborders)</param>
+        /// <returns>A two-dimensional array of images in the [row,column] format</returns>
+        public Image<Bgr,byte>[,] ExtractGemSlots(Image<Bgr,byte> screenshot,GemSlot[,] gemSlots)
         {
-            Image<Bgr, byte>[,] gemSlots = new Image<Bgr, byte>[8,8];
+            Image<Bgr, byte>[,] gemSlotImages = new Image<Bgr, byte>[8,8];
             //values are for 1024 by 768 pixels
             //each gem slot is 82x82 pixels
             //the top left gem slots top left point is at 334,47
@@ -23,13 +27,11 @@ namespace Bejeweled3Bot
             {
                 for(int column = 0;column < 8;column++)
                 {
-                    Point offset = new Point(column*82, row*82);
-                    Point topLeft = new Point(baseOffset.X + offset.X, baseOffset.Y + offset.Y);
-                    Rectangle gemSlotRectangle = new Rectangle(topLeft, gemAreaSize);
-                    gemSlots[row, column] = screenshot.Copy(gemSlotRectangle);
+                    Rectangle gemSlotRectangle = gemSlots[row, column].Rectangle;
+                    gemSlotImages[row, column] = screenshot.Copy(gemSlotRectangle);
                 }
             }
-            return gemSlots;
+            return gemSlotImages;
         }
     }
 }

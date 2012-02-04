@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="GameWindow.cs" />
     <Compile Include="Gem.cs" />
+    <Compile Include="Gemslot.cs" />
     <Compile Include="ImageProcessing.cs" />
     <Compile Include="Move.cs" />
     <Compile Include="PlayArea.cs" />
