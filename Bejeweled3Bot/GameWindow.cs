@@ -41,6 +41,12 @@ namespace Bejeweled3Bot
             return FindWindow(WINDOWCLASS, WINDOWNAME);
         }
 
+        /// <summary>
+        /// Most of the time it just returns a black screen, this is because the game is rendering straight to the 
+        /// graphics card using directx and bypassing whatever windows usually uses for PrintWindow 
+        /// AFAIK directx screenshots only work if the window is currently visible (not overlaid by the bot itself)
+        /// </summary>
+        /// <returns></returns>
         public Image<Bgr, byte> TakeScreenshot()
         {
             Bitmap frame = new Bitmap(1024, 768);
